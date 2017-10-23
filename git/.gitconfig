@@ -1,0 +1,23 @@
+[user]
+	email = sivanbecker@gmail.com
+	name = Sivan Becker
+[branch]
+	autosetuprebase = always
+[color]
+	ui = true
+[alias]
+    fix = commit --amend --no-edit
+    propose = !git push origin +HEAD:$USER/$(git-symbolic-ref --short HEAD)
+    unpropose = !git push origin +:$USER/$(git-symbolic-ref --short HEAD)
+          br = branch -vv --sort=-committerdate
+    lo = !git lg @{upstream}..
+    lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)%cn%Creset' --abbrev-commit --date=relative
+    search = !"search() { git branch -l | grep $@; }; search"
+    store = !git branch garage/$(git-symbolic-ref --short HEAD)/archived_$(date +%Y_%m_%d)
+    freeze = !git branch tmp/$(git-symbolic-ref --short HEAD)/archived_$(date +%Y-%m-%d__%H-%M)
+    unfreeze = !git branch -D $(git branch -l | grep tmp/$(git-symbolic-ref --short HEAD))
+    cached = diff --cached
+    last = !"last_commits() { git lg -$@; }; last_commits"
+    flush   = !git add -A && git commit -m "flush" && git reset --hard HEAD@{1}
+[core]
+	editor = /usr/bin/vim
