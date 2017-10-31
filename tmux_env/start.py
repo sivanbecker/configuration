@@ -38,12 +38,16 @@ def _windows(names=[], pane_cmds=[], work_dir=None, layout='even-horizontal', to
     w = dict()
     w['windows'] = []
     w['tool'] = tool
-    if not len(names) == len(pane_cmds):
-        raise ValueError('Windows and commands are not the same length {}:{}'.format(names,pane_cmds))
     for index,name in enumerate(names):
-        w['windows'].append({'window_name': name,
-                             'layout':layout,
-                             'panes':[_get_pane_command([_get_env_command(work_dir),pane_cmds[index]])]})
+        try: 
+            w['windows'].append({'window_name': name,
+                                 'layout':layout,
+                                 'panes':[_get_pane_command([_get_env_command(work_dir),pane_cmds[index]])]})
+        except IndexError:
+            # for cases where no pane command, just create a pane
+            w['windows'].append({'window_name': name,
+                                 'layout':layout,
+                                 'panes':[_get_pane_command([_get_env_command(work_dir)])]})
 
     w['work_dir'] = os.path.dirname(work_dir)
     w['env'] = w['work_dir']+'.env'

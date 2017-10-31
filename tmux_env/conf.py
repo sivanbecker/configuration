@@ -43,27 +43,33 @@ tdict = {}
 #                           work_dir='/Users/sbecker/envs/flask/meeseeks/meeseeks',
 #                           tool='meeseeks')
 
-tdict['flask'] = {
-    'names': ['trm1','trm2'],
-    'pane_cmds': ['',''],
-    'work_dir': '/tmp/flask',
+tdict['dhcpawn'] = {
+    'names': ['trm1','trm2','trm3','trm4','trm5','trm6','trm7'],
+    'pane_cmds': ['export SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://127.0.0.1/dhcpawn"','export SQLALCHEMY_DATABASE_URI="postgresql+psycopg2://127.0.0.1/dhcpawn"'],
+    'work_dir': '/home/archhome/envs/dhcpawn/dhcpawn/',
+    }
+
+tdict['meeseeks'] = {
+    'names': ['trm1','trm2','trm3'],
+    'pane_cmds': [],
+    'work_dir': '/home/archhome/envs/meeseeks/meeseeks/',
     }
 
 tdict['scotty'] = {
     'names': ['trm1','trm2'],
-    'pane_cmds': ['',''],
+    'pane_cmds': [],
     'work_dir': '/home/archhome/envs/scotty/scotty/',
     }
 
 tdict['infinilab'] = {
     'names': ['trm1','trm2'],
-    'pane_cmds': ['',''],
+    'pane_cmds': [],
     'work_dir': '/home/archhome/envs/infinilab/infinilab/',
     }
 
 tdict['infradev_cli'] = {
     'names': ['trm1','trm2'],
-    'pane_cmds': ['',''],
+    'pane_cmds': [],
     'work_dir': '/home/archhome/envs/infradev_cli/',
     }
 #################### END TEMPLATES ##############
