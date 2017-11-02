@@ -72,4 +72,10 @@ tdict['infradev_cli'] = {
     'pane_cmds': [],
     'work_dir': '/home/archhome/envs/infradev_cli/',
     }
+
+tdict['mac'] = {
+    'names': ['trm1','trm2','trm3'],
+    'pane_cmds': [],
+    'work_dir': '/home/archhome/envs/',
+    }
 #################### END TEMPLATES ##############
