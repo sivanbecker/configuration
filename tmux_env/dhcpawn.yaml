@@ -1,0 +1,103 @@
+session_name: dhcpawn1
+windows:
+######################################
+- layout: tiled
+  options:
+    automatic-rename: 'off'
+  start_directory: /home/archhome/envs/dhcpawn/dhcpawn
+  panes:
+  - shell_command: source ../.env3/bin/activate
+  - focus: 'true'
+    shell_command:
+      - source ../.env3/bin/activate
+      - export SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://127.0.0.1/dhcpawn'
+      - export COB_NO_REENTRY=true
+      - cob testserver -p 8000
+  - shell_command:
+      - source ../.env3/bin/activate
+      - cob celery start-worker
+  - shell_command:
+      - sudo rabbitmq-server
+  window_name: main local
+  ######################################
+- layout: even-vertical
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command:
+      - source ../.env3/bin/activate
+      - ssh dhcpawn
+      - docker ps
+  - shell_command:
+      - source ../.env3/bin/activate
+      - ssh dhcpawn
+      - tail -f /var/log/syslog
+  start_directory: /home/archhome/envs/dhcpawn/dhcpawn
+  window_name: dhcpawn server
+#######################################
+- layout: even-horizontal
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: source ../.env3/bin/activate
+  start_directory: /home/archhome/envs/dhcpawn/dhcpawn
+  window_name: sb-ldap1
+  ######################################
+- layout: even-horizontal
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command:
+      - source ../.env3/bin/activate
+      - ssh sb-ldap
+      - docker ps
+  start_directory: /home/archhome/envs/dhcpawn/dhcpawn
+  window_name: sb-ldap2
+  ######################################
+- layout: even-horizontal
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: source ../.env3/bin/activate
+  start_directory: /home/archhome/envs/dhcpawn/dhcpawn
+  window_name: zsh
+  ######################################
+- layout: even-horizontal
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: source ../.env3/bin/activate
+  start_directory: /home/archhome/envs/dhcpawn/dhcpawn
+  window_name: sudo
+  ######################################
+- layout: even-horizontal
+  options:
+    automatic-rename: 'off'
+  panes:
+  - pane
+  start_directory: /home/archhome/envs/dhcpawn/dhcpawn
+  window_name: python
+  ######################################
+- layout: even-horizontal
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: source ../.env3/bin/activate
+  start_directory: /home/archhome/envs/dhcpawn/dhcpawn
+  window_name: zsh
+
+  ######################################
+- layout: even-horizontal
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: source ../.env3/bin/activate
+  start_directory: /home/archhome/envs/dhcpawn/data
+  window_name: zsh
