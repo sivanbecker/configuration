@@ -60,17 +60,21 @@ def _windows(names=[], pane_cmds=[], work_dir=None, layout='even-horizontal', to
 @click.argument('tool')
 def develop(tool):
     tmuxp = os.path.dirname(os.path.realpath(__file__)) + '/.tmuxp'
-    try:
-        w = _windows(tool=tool, tdict=tdict)
-    except ValueError as e:
-        click.secho(e.__str__(), fg='red')
-        exit(1)
+    if os.path.exists(os.environ.get('HOME')+"/.tmuxp/%s.yaml" % tool):
+        tmux_config_filename = os.environ.get('HOME')+"/.tmuxp/%s.yaml" % tool
+    else:
+        try:
+            w = _windows(tool=tool, tdict=tdict)
+        except ValueError as e:
+            click.secho(e.__str__(), fg='red')
+            exit(1)
 
-    stpath = w['work_dir'] + '/{}_tmuxconf.yml'.format(tool)
-    tmux_config_filename = os.path.abspath(stpath)
-    with open(tmux_config_filename, 'w') as f:
-        yaml.dump(_get_tmux_config(w), f)
-    os.chdir(tdict[tool]['work_dir'])
+        stpath = w['work_dir'] + '/{}_tmuxconf.yml'.format(tool)
+        tmux_config_filename = os.path.abspath(stpath)
+        with open(tmux_config_filename, 'w') as f:
+            yaml.dump(_get_tmux_config(w), f)
+        os.chdir(tdict[tool]['work_dir'])
+    
     os.execve('/home/archhome/Scripts/.env3/bin/tmuxp',
               [tmuxp, 'load', tmux_config_filename],
               {**os.environ})
