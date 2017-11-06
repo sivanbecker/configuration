@@ -1,0 +1,33 @@
+session_name: infinilab
+windows:
+############################################
+- focus: 'true'
+  layout: tiled
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command: docker-compose -f docker/docker-compose.yml -p infinilab up --build
+  - shell_command:
+      - sleep 10
+      - docker exec -it infinilab_infinilab_1 bash
+  - shell_command: pgcli -U infinilab infinilab
+  - shell_commnad: source ../.env2/bin/activate
+  start_directory: /home/archhome/envs/infinilab/infinilab
+  window_name: main
+############################################
+- layout: even_horizontal
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: source ../.env2/bin/activate
+  start_directory: /home/archhome/envs/infinilab/infinilab
+  window_name: trm2
+############################################
+- layout:
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command: source ../.env2/bin/activate
+  start_directory: /home/archhome/envs/infinilab/infinilab
+  window_name: trm3
