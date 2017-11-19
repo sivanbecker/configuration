@@ -1,0 +1,27 @@
+session_name: 'newterm'
+windows:
+- layout: even-vertical
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /home/archhome
+  window_name: term1
+- layout: even-vertical
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /home/archhome
+  window_name: term2
+- focus: 'true'
+  layout: even-vertical
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: zsh
+  start_directory: /home/archhome
+  window_name: term3
