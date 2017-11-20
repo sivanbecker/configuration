@@ -9,7 +9,7 @@ windows:
   - focus: 'true'
     shell_command: source ../.env2/bin/activate
   start_directory: /home/archhome/envs/infinilab/infinilab
-  window_name: shell
+  window_name: shell1
 ############################################
 - layout: even-horizontal
   options:
@@ -18,26 +18,30 @@ windows:
   - focus: 'true'
     shell_command: source ../.env2/bin/activate
   start_directory: /home/archhome/envs/infinilab/infinilab
-  window_name: shell
+  window_name: shell2
+############################################
+- layout: even-vertical
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: journalctl -f -n 100
+  - shell_command: docker-compose -f docker-compose.yml -f docker-compose-overrides.yml -p infinilab up --build
+  start_directory: /home/archhome/envs/infinilab-docker/infinilab-docker/
+  window_name: testserver
 ############################################
 - layout: tiled
   options:
     automatic-rename: 'off'
   panes:
-  - shell_command: docker-compose -f docker-compose.yml -f docker-compose-overrides.yml -p infinilab up --build
-  start_directory: /home/archhome/envs/infinilab-docker/infinilab-docker/
-  window_name: testserver
-############################################
-- layout: even-horizontal
-  options:
-    automatic-rename: 'off'
-  panes:
-  - focus: 'true'
-    shell_command:
+  - shell_command:
       - sleep 10
-      - docker exec -it infinilab_infinilab_1 bash
+      - docker container restart infinilab_infinilab-rq_1 ; docker exec -it infinilab_infinilab-rq_1 tail -f /var/log/infinilab_debug.log
+  - shell_command:
+      - sleep 10
+      - docker exec -it infinilab_infinilab_1 tail -f /var/log/infinilab_debug.log
   start_directory: /home/archhome/envs/infinilab/infinilab
-  window_name: container-shell-1
+  window_name: debug-log
 ############################################
 - layout: even-horizontal
   options:
@@ -71,3 +75,22 @@ windows:
       - ssh ilab-sivan-dmns
   start_directory: /home/archhome/envs/infinilab/infinilab
   window_name: ilab-sivan-dmns
+############################################
+- layout: aff8,211x51,0,0{105x51,0,0[105x25,0,0,35,105x25,0,26,84],105x51,106,0[105x25,106,0,82,105x25,106,26,83]}
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command:
+      - ssh ilab-sivan
+      - tail -f /var/log/infinilab_debug.log
+  - shell_command:
+      - ssh ilab-sivan
+  - shell_command:
+    - ssh ilab-sivan-dmns
+    - tail -f /var/log/infinilab_debug.log
+  - shell_command:
+      - ssh ilab-sivan-dmns
+  start_directory: /home/archhome/envs/infinilab/infinilab
+  window_name: my-dev-debug
+############################################
