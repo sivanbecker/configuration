@@ -1,0 +1,25 @@
+#! /usr/bin/env python
+import slash
+
+import logbook
+import pathlib
+
+slash.config.root.log.root = '/tmp/logs'
+slash.config.root.log.subpath = '{context.session.id}/{context.test_id}.log'
+slash.config.root.log.console_level = logbook.INFO
+slash.config.root.log.truncate_console_lines = False
+slash.config.root.log.last_session_symlink = 'last_session'
+slash.config.root.log.last_failed_symlink = 'last_failed'
+slash.config.root.log.last_test_symlink = 'last_test'
+slash.config.root.log.last_session_dir_symlink = 'last_session_dir'
+slash.config.root.log.colorize = True
+slash.config.root.run.stop_on_error = False
+
+
+try:
+    from slash_infinidat import config as si_config
+except ImportError:
+    pass
+else:
+    si_config.root.system.propagate_simulator_exceptions = True
+    si_config.root.system.default_labels = ['infradev']
