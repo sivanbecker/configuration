@@ -105,6 +105,7 @@ alias gr='grep -r'
 #alias diff='colordiff'
 #alias emacs="/Applications/Emacs.app/Contents/MacOS/Emacs"
 # ssh connections
+alias itzik="/home/archhome/.infinidat/itzik"
 alias db="ssh ilab-sivan-db"
 alias dmns="ssh ilab-sivan-dmns"
 alias serv="ssh ilab-sivan"
@@ -158,12 +159,9 @@ tml () {
 tmux ls
 }
 
-#nsource () {
-#source $1 
-#export PATH="/usr/local/sbin:/usr/local/bin:/Users/sbecker/Scripts:$PATH"
-#
-#}
-
+activate () {
+source $1/bin/activate
+}
 
 # nmv = New Master Env macro 
 # will create a new venv ,activate and clone master into it.

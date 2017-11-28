@@ -1,0 +1,46 @@
+session_name: infradev
+windows:
+############################################
+- focus: 'true'
+  layout: even-horizontal
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: 
+    - source ../.env3/bin/activate
+    - pytest tests -k test_clone_requests  
+  start_directory: /home/archhome/envs/infradev/infinisdk
+  window_name: sdk1
+############################################
+- layout: even-horizontal
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: source ../.env3/bin/activate
+  start_directory: /home/archhome/envs/infradev/infinisdk
+  window_name: sdk2
+############################################
+- layout: even-vertical
+  options:
+    automatic-rename: 'off'
+  panes:
+  - focus: 'true'
+    shell_command: 
+    - source ../.env3/bin/activate
+    - slash run -Si -vvvv  
+  start_directory: /home/archhome/envs/infradev/stokado
+  window_name: stokado Simulator 
+############################################
+- layout: tiled
+  options:
+    automatic-rename: 'off'
+  panes:
+  - shell_command:
+    - source ../.env3/bin/activate
+  - shell_command:
+    - source ../.env3/bin/activate
+  start_directory: /home/archhome/envs/infradev/infinisdk
+  window_name: stokado
+############################################
