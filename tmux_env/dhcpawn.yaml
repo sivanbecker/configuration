@@ -10,10 +10,10 @@ windows:
   - focus: 'true'
     shell_command:
       - source ../.env3/bin/activate
-      - _DHCPAWN_LOG_LEVEL=10 SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://127.0.0.1/dhcpawn' COB_NO_REENTRY=true cob testserver -p 8000  
+      - _DHCPAWN_LOG_LEVEL=10 COB_DATABASE_URI='postgresql+psycopg2://127.0.0.1/dhcpawn' cob testserver -p 8000  
   - shell_command:
       - source ../.env3/bin/activate
-      - _DHCPAWN_LOG_LEVEL=10 SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://127.0.0.1/dhcpawn' cob celery start-worker
+      - _DHCPAWN_LOG_LEVEL=10 COB_DATABASE_URI='postgresql+psycopg2://127.0.0.1/dhcpawn' cob celery start-worker
   - shell_command:
       - ssh sb-ldap
       - docker logs openldap_ldap_1

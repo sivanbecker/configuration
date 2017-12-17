@@ -1,3 +1,4 @@
+# vim: tabstop=8 expandtab shiftwidth=4 softtabstop=4
 # Path to your oh-my-zsh installation.
 export ZSH=~/.oh-my-zsh
 #export PROMPT="${ret_status} %{$fg[cyan]%}%c%{$reset_color%} $(git_prompt_info)"
@@ -127,6 +128,7 @@ alias gco="git checkout"
 # sivan private
 export PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:$HOME/envs/itzik/:/usr/local/go/bin:$PATH"
 alias v="vim"
+alias crontab="export VISUAL=vim;crontab"
 
 # new iterm default venv ( python 3.5 )
 #envs
