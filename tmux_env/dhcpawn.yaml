@@ -1,4 +1,4 @@
-session_name: dhcpawn1
+session_name: dhcpawn
 windows:
 ######################################
 - layout: tiled

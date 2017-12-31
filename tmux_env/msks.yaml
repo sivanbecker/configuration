@@ -1,0 +1,48 @@
+session_name: cob-msks
+windows:
+- focus: 'true'
+  layout: tiled
+  options:
+    automatic-rename: 'off'
+    synchronize-panes: 'off'
+  panes:
+  - shell_command:
+    - cd /home/archhome/envs/msks/msks
+    - activate /home/archhome/envs/msks/env
+    - cob testserver
+  - shell_command:
+    - cd /home/archhome/envs/msks/msks/webapp
+    - activate /home/archhome/envs/msks/env
+    - ember build --watch
+  - focus: 'true'
+    shell_command:
+    - cd /home/archhome/envs/msks/msks
+    - activate /home/archhome/envs/msks/env
+  - shell_command:
+    - cd /home/archhome/envs/msks/msks
+    - activate /home/archhome/envs/msks/env
+  window_name: msks2
+
+###############################
+- layout: even-vertical
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command:
+    - cd /home/archhome/envs/msks/msks/webapp
+    - activate /home/archhome/envs/msks/env
+
+  start_directory: /home/archhome/envs/msks/msks
+  window_name: msks1
+
+  ###############################
+- layout: even-vertical
+  options: {}
+  panes:
+  - focus: 'true'
+    shell_command:
+    - cd /home/archhome/envs/msks/msks/webapp
+    - activate /home/archhome/envs/msks/env
+
+  start_directory: /home/archhome/envs/msks/msks
+  window_name: msks2

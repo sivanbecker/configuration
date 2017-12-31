@@ -128,7 +128,7 @@ alias gco="git checkout"
 # sivan private
 export PATH="/usr/local/bin:/usr/bin:/usr/local/sbin:$HOME/envs/itzik/:/usr/local/go/bin:$PATH"
 alias v="vim"
-alias crontab="export VISUAL=vim;crontab"
+alias crontab="export EDITOR=/usr/bin/vim;crontab"
 
 # new iterm default venv ( python 3.5 )
 #envs
