@@ -1,0 +1,42 @@
+session_name: cob_dhcpawn_new
+windows:
+######################################
+- layout: tiled
+  options:
+    automatic-rename: 'off'
+  start_directory: $HOME/envs/dhcpawn/dhcpawn
+  panes:
+  - shell_command:
+      - source ../.env3/bin/activate
+      - cob celery start-worker
+  - focus: 'true'
+    shell_command:
+      - source ../.env3/bin/activate
+      - _DHCPAWN_LOG_LEVEL=10 cob testserver -p 8000
+  - shell_command:
+      - source ../.env3/bin/activate
+      - ssh sb-ldap
+      - docker logs openldap_ldap_1
+  - shell_command:
+      - source ../.env3/bin/activate
+      - sudo rabbitmq-server
+  window_name: celery-testserver-sb_ldap-rabbitmq
+########################################
+- layout: tiled
+  options:
+    automatic-rename: 'off'
+  start_directory: $HOME/envs/dhcpawn/dhcpawn
+  panes:
+  - shell_command:
+      - source ../.env3/bin/activate
+      - clear
+  - shell_command:
+      - source ../.env3/bin/activate
+      - pgcli dhcpawn
+  - shell_command:
+      - source ../.env3/bin/activate
+      - clear
+  - shell_command:
+      - source ../.env3/bin/activate
+      - clear
+  window_name: pgcli-dhcpawn_srv-shell
